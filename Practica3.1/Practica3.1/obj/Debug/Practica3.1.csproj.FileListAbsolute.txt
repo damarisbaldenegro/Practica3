@@ -1,0 +1,5 @@
+C:\Users\damarisjudith\Documents\Git\Repositorios\Practica3\Practica3.1\Practica3.1\obj\Debug\Practica3.1.csprojResolveAssemblyReference.cache
+C:\Users\damarisjudith\Documents\Git\Repositorios\Practica3\Practica3.1\Practica3.1\bin\Debug\Practica3.1.exe
+C:\Users\damarisjudith\Documents\Git\Repositorios\Practica3\Practica3.1\Practica3.1\bin\Debug\Practica3.1.pdb
+C:\Users\damarisjudith\Documents\Git\Repositorios\Practica3\Practica3.1\Practica3.1\obj\Debug\Practica3.1.exe
+C:\Users\damarisjudith\Documents\Git\Repositorios\Practica3\Practica3.1\Practica3.1\obj\Debug\Practica3.1.pdb
