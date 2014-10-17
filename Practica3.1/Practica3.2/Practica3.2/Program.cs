@@ -4,9 +4,11 @@ namespace Practica_03
 {
     public class Alumno
     {
-        private Hashtable BdAlumnos=new Hashtable();
-        private string NombreAlumno;
-        private string CodigoAlumno;
+        private Hashtable Table=new Hashtable();
+        private string Nombre;
+        private string Codigo;
+        private string edad;
+        private string telefono;
         public Alumno()
         {
 
@@ -15,20 +17,25 @@ namespace Practica_03
         private void alta()
         {
             Console.Write("Ingrese nombre del alumno: ");
-            NombreAlumno = Console.ReadLine();
+            Nombre = Console.ReadLine();
             Console.Write("Ingresa codigo del alumno: ");
-            CodigoAlumno = Console.ReadLine();
+            Codigo = Console.ReadLine();
+             Console.Write("Ingresa edad del alumno: ");
+            edad = Console.ReadLine();
+             Console.Write("Ingresa telefono del alumno: ");
+            telefono = Console.ReadLine();
             try
             {
-                BdAlumnos.Add(CodigoAlumno, NombreAlumno);
+                Table.Add(Codigo, Nombre);
+                Table.Add(edad,telefono);
             }
             catch
             {
-                Console.Write("\nCodigo de alumno repetido\nUltimo No Agregado!!!\n");
+                Console.Write("\nCodigo de alumno repetido\n");
             }
             
         }
-         public void practicaHashtableAlumnos()
+         public void chido()
         {
             this.alta();
             this.alta();
@@ -40,14 +47,14 @@ namespace Practica_03
         }
         private void editar()
         {
-            Console.Write("Codigo del alumno que desea Modificar: ");
-            CodigoAlumno = Console.ReadLine();
-            if (BdAlumnos.Contains(CodigoAlumno))
+            Console.Write("Codigo del alumno que desea Editar: ");
+            Codigo = Console.ReadLine();
+            if (Table.Contains(Codigo))
             {
                 Console.Write("Coloque nuevo nombre: ");
-                NombreAlumno = Console.ReadLine();
-                BdAlumnos[CodigoAlumno] = NombreAlumno;
-                Console.WriteLine("Codigo " + CodigoAlumno + " Se ha cambiado");
+                Nombre = Console.ReadLine();
+                Table[Codigo] = Nombre;
+                Console.WriteLine("Codigo " + Codigo + " Se ha editado");
             }
             else
             {
@@ -57,28 +64,29 @@ namespace Practica_03
         private void eliminar()
         {
             Console.Write("\nCodigo del alumno que desea Eliminar");
-            CodigoAlumno = Console.ReadLine();
-            if (BdAlumnos.ContainsKey(CodigoAlumno))
+            Codigo = Console.ReadLine();
+            if (Table.ContainsKey(Codigo))
             {
-                Console.WriteLine("Codigo "+CodigoAlumno+" Eliminado");
+                Console.WriteLine("Codigo "+Codigo+" Eliminado");
             }
             else
             {
-                Console.Write("Codigo " + CodigoAlumno + " No se ha encontrado");
+                Console.Write("Codigo " + Codigo + " No se ha encontrado");
             }
-            BdAlumnos.Remove(CodigoAlumno);
+            Table.Remove(Codigo);
         }
         private void imprimir()
         {
             Console.WriteLine("\n   Clave    Nombre");
-            foreach (DictionaryEntry Bd in BdAlumnos)
+            foreach (DictionaryEntry Bd in Table)
                 Console.WriteLine("    {0}:    {1}", Bd.Key, Bd.Value);
         }
         	public static void Main(string[] args){
 
 			Alumno s = new Alumno();
-			s.practicaHashtableAlumnos();
+			s.chido();
        	    s.alta();
+       	    
             s.editar();
             s.imprimir();
             s.eliminar();
