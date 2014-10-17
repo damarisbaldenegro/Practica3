@@ -8,45 +8,95 @@
  */
 using System;
 using System.Collections;
-namespace Practica3._
+namespace Practica3.1
 {
-	class alumno{
-		
-		int sel;
+    public class Alumno
+    {
+        private Hashtable BdAlumnos=new Hashtable();
+        private string NombreAlumno;
+        private string CodigoAlumno;
+        public Alumno()
+        {
 
-		public alumno ()
-		{
+        }
 
+        public void practicaHashtableAlumnos()
+        {
+            this.alta();
+            this.alta();
+            this.editar();
+            this.imprimir();
+            this.eliminar();
+            this.imprimir();
+            Console.ReadKey(true);
+        }
+
+        private void alta()
+        {
+            Console.Write("Ingrese nombre del alumno: ");
+            NombreAlumno = Console.ReadLine();
+            Console.Write("Ingresa codigo del alumno: ");
+            CodigoAlumno = Console.ReadLine();
+            try
+            {
+                BdAlumnos.Add(CodigoAlumno, NombreAlumno);
+            }
+            catch
+            {
+                Console.Write("\nCodigo de alumno repetido\nUltimo No Agregado!!!\n");
+            }
+            
+        }
+        private void editar()
+        {
+            Console.Write("Codigo del alumno que desea Modificar: ");
+            CodigoAlumno = Console.ReadLine();
+            if (BdAlumnos.Contains(CodigoAlumno))
+            {
+                Console.Write("Coloque nuevo nombre: ");
+                NombreAlumno = Console.ReadLine();
+                BdAlumnos[CodigoAlumno] = NombreAlumno;
+                Console.WriteLine("Codigo " + CodigoAlumno + " Se ha cambiado");
+            }
+            else
+            {
+                Console.Write("\nNo Encontrado\n");
+            }
+        }
+        private void eliminar()
+        {
+            Console.Write("\nCodigo del alumno que desea Eliminar");
+            CodigoAlumno = Console.ReadLine();
+            if (BdAlumnos.ContainsKey(CodigoAlumno))
+            {
+                Console.WriteLine("Codigo "+CodigoAlumno+" Eliminado");
+            }
+            else
+            {
+                Console.Write("Codigo " + CodigoAlumno + " No se ha encontrado");
+            }
+            BdAlumnos.Remove(CodigoAlumno);
+        }
+        private void imprimir()
+        {
+            Console.WriteLine("\n   Clave    Nombre");
+            foreach (DictionaryEntry Bd in BdAlumnos)
+                Console.WriteLine("    {0}:    {1}", Bd.Key, Bd.Value);
+        }
+        	public static void Main(string[] args){
+
+			Alumno simu = new Alumno();
+			simu.practicaHashtableAlumnos();
+       	    simu.alta();
+            simu.editar();
+            simu.imprimir();
+            simu.eliminar();
+            simu.imprimir();
+
+			Console.ReadKey(true);
 		}
 
-		public void muestra(){
-
-			Hashtable hash = new Hashtable();
-		
-			hash.Add(212473153, "Pablo Baldenegro Torres");
-			hash.Add(212473154, "Pedro De La Rosa Zermeño");
-
-			Console.WriteLine ("Los Codigos Ingresados son : ");
-
-			foreach (int code in hash.Keys) 
-			{
-				Console.WriteLine (code);
-			}
-
-			Console.WriteLine ("Escribe el codigo que desea consultar");
-			sel = int.Parse( Console.ReadLine());
-
-
-			if (sel == 213473153) {
-				Console.WriteLine (hash [213473153]);
-			} else 
-			{
-				Console.WriteLine ("Error Codigo " + sel + "  No EXISTE ");
-			}
-
-
-
-		}
+    }
 
 
 		public static void Main(string[] args){
